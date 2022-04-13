@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: employee
+        uri: http://localhost:8061/
+        predicates:
+        - Path=/employee/**
+      - id: external
+        uri: http://localhost:8071/
+        predicates:
+        - Path=/person/**
